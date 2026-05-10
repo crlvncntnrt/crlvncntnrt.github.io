@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     /* ==========================================================================
        Preloader
        ========================================================================== */
@@ -69,9 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     const textElement = document.querySelector('.typewriter-text');
     const words = [
-        "Aspiring Full-Stack Developer", 
-        "Entry-Level System Developer", 
+        "System Analyst",
+        "Entry-Level System Developer",
         "Tech Enthusiast"
+        "Jack of all trades in it industry"
     ];
     let wordIndex = 0;
     let charIndex = 0;
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function type() {
         const currentWord = words[wordIndex];
-        
+
         if (isDeleting) {
             textElement.textContent = currentWord.substring(0, charIndex - 1);
             charIndex--;
@@ -145,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
             btn.style.background = '#4CAF50';
             contactForm.reset();
-            
+
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.style.background = '';
@@ -158,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
-    
+
     let particlesArray;
 
     // Set canvas dimensions
@@ -174,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Parse CSS variable for accent color to use in canvas
     const style = getComputedStyle(document.body);
     let rawColor = style.getPropertyValue('--accent-secondary').trim(); // e.g. #8a2be2
-    
+
     class Particle {
         constructor(x, y, directionX, directionY, size, color) {
             this.x = x;
@@ -209,10 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function initParticles() {
         particlesArray = [];
         let numberOfParticles = (canvas.height * canvas.width) / 15000;
-        
+
         // Limit particles for performance
-        if(numberOfParticles > 150) numberOfParticles = 150;
-        
+        if (numberOfParticles > 150) numberOfParticles = 150;
+
         for (let i = 0; i < numberOfParticles; i++) {
             let size = (Math.random() * 2) + 1;
             let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
@@ -229,8 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let opacityValue = 1;
         for (let a = 0; a < particlesArray.length; a++) {
             for (let b = a; b < particlesArray.length; b++) {
-                let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
-                               ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                    ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
                 if (distance < (canvas.width / 7) * (canvas.height / 7)) {
                     opacityValue = 1 - (distance / 20000);
                     ctx.strokeStyle = `rgba(138, 43, 226, ${opacityValue * 0.15})`;
