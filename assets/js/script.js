@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       Form Submission (Prevent Default)
+       Form Submission (AJAX via FormSubmit)
        ========================================================================== */
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
@@ -142,14 +142,36 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = contactForm.querySelector('button');
             const originalText = btn.innerHTML;
-            btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
-            btn.style.background = '#4CAF50';
-            contactForm.reset();
 
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-            }, 3000);
+            btn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
+                    btn.style.background = '#4CAF50';
+                    contactForm.reset();
+                } else {
+                    btn.innerHTML = 'Failed to Send <i class="fas fa-times"></i>';
+                    btn.style.background = '#f44336';
+                }
+            })
+            .catch(() => {
+                btn.innerHTML = 'Error — Try Again <i class="fas fa-times"></i>';
+                btn.style.background = '#f44336';
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 3000);
+            });
         });
     }
 

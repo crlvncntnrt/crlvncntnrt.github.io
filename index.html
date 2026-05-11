@@ -62,7 +62,7 @@
                     </div>
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="#" class="btn btn-outline">Download Resume</a>
+                        <a href="assets/images/resume.pdf" download="Resume_Carl_Vincent_Nartea.pdf" class="btn btn-outline">Download Resume</a>
                     </div>
                 </div>
                 <div class="hero-image reveal">
@@ -362,18 +362,19 @@
                         </div>
                     </div>
 
-                    <form class="contact-form glass-card" id="contactForm">
+                    <form action="https://formsubmit.co/carlvincentnartea@gmail.com" method="POST" class="contact-form glass-card" id="contactForm">
+                        <input type="hidden" name="_captcha" value="false">
                         <div class="form-group">
-                            <input type="text" id="name" required placeholder="Your Name">
+                            <input type="text" name="name" id="name" required placeholder="Your Name">
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" required placeholder="Your Email">
+                            <input type="email" name="email" id="email" required placeholder="Your Email">
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" required placeholder="Subject">
+                            <input type="text" name="_subject" id="subject" required placeholder="Subject">
                         </div>
                         <div class="form-group">
-                            <textarea id="message" rows="5" required placeholder="Your Message"></textarea>
+                            <textarea name="message" id="message" rows="5" required placeholder="Your Message"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Send Message <i
                                 class="fas fa-paper-plane"></i></button>
